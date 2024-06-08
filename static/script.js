@@ -38,7 +38,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 data.forEach(book => {
                     const entry = document.createElement('div');
                     entry.className = 'guestbook-entry';
-                    entry.innerHTML = `<strong>${book.title}</strong><p>${book.body}</p>`;
+                    entry.id = book.id;
+                    entry.innerHTML = `<strong>${book.title}</strong><p>${book.date}</p><p>${book.body}</p><button class="delete-button">삭제</button>`; // add delete button here
+
+                    const deleteButton = entry.querySelector('.delete-button');
+                    deleteButton.addEventListener('click', () => {
+                        fetch(`/book/${book.id}`, {
+                            method: 'DELETE',
+                        })
+                            .then(response => response.json())
+                            .then(data => {
+                                // After deletion, refresh the book list.
+                                fetchBooks();
+                            })
+                            .catch((error) => {
+                                console.error('Error:', error);
+                            });
+                    });
+
                     guestbookEntries.appendChild(entry);
                 });
             })
