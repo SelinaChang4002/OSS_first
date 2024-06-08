@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     const entry = document.createElement('div');
                     entry.className = 'guestbook-entry';
                     entry.id = book.id;
-                    entry.innerHTML = `<strong>${book.title}</strong><p>${book.date}</p><p>${book.body}</p><button class="delete-button">삭제</button>`; // add delete button here
+                    const formattedDate = moment(book.date).format('YYYY-MM-DD HH:mm:ss'); // format the date
+                    entry.innerHTML = `<strong>${book.title}</strong><p>${formattedDate}</p><p>${book.body}</p><button class="delete-button">삭제</button>`; // use the formatted date
 
                     const deleteButton = entry.querySelector('.delete-button');
                     deleteButton.addEventListener('click', () => {
@@ -48,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         })
                             .then(response => response.json())
                             .then(data => {
-                                // After deletion, refresh the book list.
                                 fetchBooks();
                             })
                             .catch((error) => {
