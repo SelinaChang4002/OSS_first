@@ -1,0 +1,187 @@
+body {
+    font-family: 'Gaegu', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #B163A3; /* 팬톤 올해의 컬러 (Radiant Orchid) */
+    overflow-x: hidden; /* 수평 스크롤 없애기 */
+}
+
+.container {
+    text-align: center;
+    padding: 50px;
+    margin: 50px auto;
+    width: 60%;
+    position: relative; /* 자식 요소의 절대 위치를 위한 상대 위치 */
+    z-index: 0; /* 기본 z-index 설정 */
+}
+
+#name {
+    display: inline-block;
+    padding: 10px;
+    transition: all 1s ease;
+    cursor: pointer;
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100px; /* 고정 높이 설정 */
+    overflow: hidden; /* 내용이 넘치면 숨김 */
+    transition: all 1s ease;
+    position: relative;
+}
+
+#name:hover + .text-container {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px; /* 요소 간의 간격 조절 */
+}
+
+#name:hover {
+    border: 2px solid #000;
+    border-radius: 50%;
+    background: linear-gradient(45deg, yellow, orange, red);
+    box-shadow: 0 0 30px rgba(255, 165, 0, 0.8);
+    color: white;
+    animation: infinite-rotate 2s linear infinite;
+}
+
+@keyframes infinite-rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.image-container {
+    margin-top: 30px;
+}
+
+.interactive-image {
+    width: 300px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.interactive-image:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.2);
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+#name:hover ~ .text-container .text span {
+    display: inline-block;
+    animation: shake 0.5s infinite;
+    color: #8B4513; /* 갈색으로 색상 변경 */
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(2); }
+}
+
+@keyframes color-change {
+    0% { color: red; }
+    25% { color: yellow; }
+    50% { color: blue; }
+    75% { color: green; }
+    100% { color: red; }
+}
+
+.birthday-animate {
+    animation: color-change 2s infinite, spin 2s infinite linear, bounce 1s infinite alternate;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* 맨 앞으로 이동 */
+    will-change: transform;
+}
+
+.guestbook {
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    width: 60%;
+    max-height: 300px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 수직 스크롤 설정 */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#guestbook-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#guestbook-form input, #guestbook-form textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Gaegu', sans-serif;
+}
+
+#guestbook-form button {
+    position: relative;
+    padding: 10px 20px;
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#guestbook-form button:hover {
+    background-color: #ff4081;
+    color: yellow;
+    transform: scale(1.1);
+    border-radius: 20px; /* 버튼 모서리 둥글게 변경 */
+}
+
+#guestbook-form button:hover::after {
+    content: ' 진짜 남겨!';
+}
+
+#guestbook-entries {
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+    max-height: 200px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 수직 스크롤 설정 */
+}
+
+.guestbook-entry {
+    background-color: #f9f9f9;
+    margin: 10px auto;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+    font-family: 'Gaegu', sans-serif;
+}

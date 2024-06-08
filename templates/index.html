@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자기소개 페이지</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1 id="name">장예은</h1>
+        <div class="text-container">
+            <p class="text" id="school">학교: 광운대학교</p>
+            <p class="text" id="department">소속학부: 정보융합학부</p>
+            <p class="text" id="birthday">생년월일: 2004년 5월 14일</p>
+        </div>
+        <div class="image-container">
+            <img src="/static/뽀송이.png" alt="뽀송이" class="interactive-image">
+        </div>
+    </div>
+
+    <div class="guestbook">
+        <h2>방명록</h2>
+        <form id="guestbook-form">
+            <input type="text" id="nameInput" placeholder="이름" required>
+            <textarea id="messageInput" placeholder="메시지" required></textarea>
+            <button type="submit" id="submitButton">남기기</button>
+        </form>
+        <div id="guestbook-entries"></div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
